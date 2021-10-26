@@ -3,15 +3,40 @@
 *	la media dei valori di un array
 */
 
-int statsint(int v[], int dim, ) {
+/* Gli ultimi tre parametri sono indirizzi della memoria, in cui il sottoprogramma salverà i risultati */
+/* int *risMax indica il tipo di dato e il suo indirizzo */
+
+/*
+int main (char *argv[], int argc) {}
+
+char *argv[] 	significa che passo l'indirizzo dell'array argv
+int argc 		è la dimensione dell'array
+*/
+
+void statsint(int[], int, int*, int*, float*);
+
+void statsint(int v[], int dim, int *risMax, int *risMin, float *risArg) {
 	int i, iMax, iMin, tot;
 	float avg;
 
 	iMax = 0;
 	iMin = 0;
+	tot = v[0];
 
-	for (i = 0; i < dim; i++) {
-		if 
+	for (i = 1; i < dim; i++) {
+		if (v[i] > v[iMax]) {
+			iMax = i;
+		} else if (v[i] < v[iMin]) {
+			iMin = i;
+		}
+		tot += v[i];
 	}
 
+	/* risMin = iMin; 	NO, sostituisce all'indirizzo il valore di iMin */
+
+	*risMax = iMax;		/* risMax è un indirizzo, *risMax è un int */
+	*risMin = iMin;
+	*risAvg = avg;
+
+	avg = (float) tot/dim;
 }

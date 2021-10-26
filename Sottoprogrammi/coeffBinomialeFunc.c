@@ -40,6 +40,10 @@ int fact(int num) {
     return ris;
 }
 
+/* Passaggio parametri per copia-valore */
+/* I valori passati al sottoprogramma vengono copiati in una parte di memoria ad esso dedicata,
+   ogni modifica rimane nel sottoprogramma */
+
 /* Usando una sola variabile in più */
 /*
 int fact(int num) {
@@ -52,3 +56,4 @@ int fact(int num) {
 	return f;
 }
 */
+

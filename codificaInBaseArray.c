@@ -5,8 +5,6 @@
 *	base 2
 */
 
-[0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
-
 #include <stdio.h>
 #define BASE 2
 #define NBIT 10
