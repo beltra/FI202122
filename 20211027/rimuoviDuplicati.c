@@ -33,7 +33,7 @@ int main ()  {
     return 0;
 }
 
-void rimuoviDuplicati(int in[], int inLen, int *out, int *len) {
+void rimuoviDuplicati(int in[], int inLen, int out[], int *len) {
     int outLen;
     int i, j, found;
 

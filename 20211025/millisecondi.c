@@ -1,3 +1,7 @@
+/*
+*   Sottoprogramma che data in ingresso l'ora attuale, restituisce i millisecondi trascorsi dalla mezzanotte
+*/
+
 #define SECINMIN 60
 #define MININHR  60
 #define MILLISINSEC 1000
