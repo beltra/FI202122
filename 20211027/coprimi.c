@@ -34,7 +34,7 @@ int isCoprimi (int a, int b) {
 
     /* For every number lower than the minor of the two, check if it's a divisor for both */
     isOK = 1;
-    for (i = 2; i < min && isOK; i++) {
+    for (i = 2; i <= min && isOK; i++) {
         if (a % i == 0 && b % i == 0) {
             isOK = 0;
         }

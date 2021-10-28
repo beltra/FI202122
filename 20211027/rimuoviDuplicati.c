@@ -37,8 +37,7 @@ void rimuoviDuplicati(int in[], int inLen, int out[], int *len) {
     int outLen;
     int i, j, found;
 
-    outLen = 1;
-    out[0] = in[0];
+    outLen = 0;
 
     /* For every number */
     for (i = 0; i < inLen; i++) {
@@ -56,6 +55,6 @@ void rimuoviDuplicati(int in[], int inLen, int out[], int *len) {
         }        
     }
 
-    /* Save the result */
+    /* Save the length */
     *len = outLen;
 }

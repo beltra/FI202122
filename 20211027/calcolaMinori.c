@@ -8,7 +8,7 @@
 void calcolaMinori(int[], int, int*);
 
 /* Call example */
-int main ()  {
+int main (int argc, char *argv[])  {
     int in[MAXLEN], out[MAXLEN];
     int i, len, tmp;
 
@@ -33,7 +33,7 @@ int main ()  {
     return 0;
 }
 
-void calcolaMinori(int val[], int len, int *min) {
+void calcolaMinori(int val[], int len, int min[]) {
     int i, j, count;
 
     /* For every number */

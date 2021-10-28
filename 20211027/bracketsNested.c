@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #define LEN 50
+#define APERTA '('
 
 int numParentesi(char[]);
 
@@ -25,14 +26,14 @@ int numParentesi(char str[]) {
     
     /* Count how many brackets were opened and how many were closed */
     for (i = 0; str[i] != '\0'; i++) {
-        if (str[i] == '(') {
+        if (str[i] == APERTA) {
             numOpen++;
-        } else if (str[i] == ')') {
+            if (numOpen > max) {
+                max = numOpen;
+            }
+        } else {
             numOpen--;
-        }
-        if (numOpen > max) {
-            max = numOpen;
-        }
+        }        
     }
 
     return max;

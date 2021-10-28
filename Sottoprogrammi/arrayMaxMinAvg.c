@@ -13,9 +13,34 @@ char *argv[] 	significa che passo l'indirizzo dell'array argv
 int argc 		è la dimensione dell'array
 */
 
+#include <stdio.h>
+#define MAXVAL 100
+
 void statsint(int[], int, int*, int*, float*);
 
-void statsint(int v[], int dim, int *risMax, int *risMin, float *risArg) {
+int main (int argc, char *argv[]) {
+	int val[MAXVAL];
+	int nVal, i;
+	int risMax, risMin, risAvg;
+
+	do {
+		scanf("%d", &nVal);
+	} while (nVal <= 0 || nVal > MAXVAL);
+
+	for (i = 0; i < nVal; i++) {
+		scanf("%d", &val[i]);
+	}
+
+	statstint(val, nVal, &risMax, &risMin, &risAvg);
+
+	printf("%d %d %f", val[risMax], val[risMin], risAvg);
+
+	
+
+	return 0;
+}
+
+void statsint(int v[], int dim, int *risMax, int *risMin, float *risAvg) {
 	int i, iMax, iMin, tot;
 	float avg;
 
