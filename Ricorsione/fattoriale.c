@@ -14,7 +14,7 @@ int factorial(int n) {
 
     ris = 1;
     for (i = 2; i <= n; i++) {
-		ris *= i;
+        ris *= i;
 	}
     
     return ris;
