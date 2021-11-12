@@ -1,7 +1,6 @@
 #include <stdio.h>
 #define LEN 50
 
-
 int main () {
     FILE* fp;
 
