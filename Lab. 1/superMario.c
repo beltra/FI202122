@@ -16,7 +16,7 @@ int main (int argc, char * argv[]) {
     /* Per ogni riga */
     for (i = 1; i <= alt; i++) {
         /* Stampa una sequenza di spazi e blocchi */
-        /*for (j = 0; j < alt - i; j++) {
+        for (j = 0; j < alt - i; j++) {
             printf(" ");
         }
         for (j = alt - i; j < alt; j++) {
@@ -27,8 +27,8 @@ int main (int argc, char * argv[]) {
         }
         for (j = alt + SPAZI; j < alt + SPAZI + i; j++) {
             printf("%c", BLOCK);
-        }*/
-
+        }
+        /*
         for (j = 0; j < (alt + SPAZI + i); j++) {
             if ((j >= (alt - i) && j < alt) || j >= alt + SPAZI) {
                 printf("%c", BLOCK);
@@ -37,6 +37,7 @@ int main (int argc, char * argv[]) {
                 printf(" ");
             }
         }
+        */
         printf("\n");
     }
 
