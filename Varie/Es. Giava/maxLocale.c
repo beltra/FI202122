@@ -30,7 +30,8 @@ int main (int argc, char * argv[]) {
             printf("%d", max[i]);
         }
         printf("\n");
-    } else {
+    }
+    else {
         printf("No max locali\n");
     }
 
