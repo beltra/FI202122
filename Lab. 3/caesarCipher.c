@@ -16,7 +16,7 @@ int main (int argc, char *argv[]) {
 	int key;
 
 	gets(str);
-
+	
 	scanf("%d", &key);
 
 	encrypt(str, key);
@@ -39,7 +39,7 @@ void encrypt(char str[], int key) {
 	for (i = 0; str[i] != '\0'; i++) {
 		if (str[i] >= FIRSTLOWER && str[i] <= FIRSTLOWER + LETTERS) {
 			str[i] = FIRSTLOWER + ((str[i] - FIRSTLOWER) + key) % LETTERS;
-		} else {
+		} else if (str[i] >= FIRSTUPPER && str[i] <= FIRSTUPPER + LETTERS) {
 			str[i] = FIRSTUPPER + ((str[i] - FIRSTUPPER) + key) % LETTERS;
 		}
 	}

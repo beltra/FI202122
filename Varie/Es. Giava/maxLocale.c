@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MAXLEN 100
+#define MAXLEN 10
 
 int main (int argc, char * argv[]) {
     int num[MAXLEN];
@@ -25,9 +25,9 @@ int main (int argc, char * argv[]) {
     }
 
     if (j > 0) {
-        printf("Max locale in: ");
+        printf("Max locale in:");
         for (i = 0; i < j; i++) {
-            printf("%d", max[i]);
+            printf(" %d", max[i]);
         }
         printf("\n");
     }
