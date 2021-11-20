@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 
         free(val);
     } else {
-        printf("Failed allocating memory");
+        printf("Failed allocating memory\n");
     }
 
     return 0;
