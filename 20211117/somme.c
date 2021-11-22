@@ -37,11 +37,13 @@ int countComb(int num[], int dim, int obj) {
 
     count = 0;
 
-    for (i = dim -1; i >= 0; i--) {
-        while (obj != 0) {
-            count += countComb(num, dim - 1, obj - num[i]);
-        }
-    }
+    if (obj == 0) {
+        count = 1;
+    }    
 
+    for (i = dim-1; i >= 0; i--) {
+        count += countComb(num, i, obj - num[i]);
+    }
+    
     return count;
 }
