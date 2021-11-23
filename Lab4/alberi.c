@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define FILE_NAME "alberi1.txt"
+#define MAX_LEN 80
 #define MAX_DIM 10
 #define TREE 1
 #define LIMIT_CHANGE 8
@@ -18,6 +18,8 @@ int checkDistanza(int[][MAX_DIM], int);
 int main (int argc, char*argv[]) {
 	FILE *fp;
 
+	char fileName[MAX_LEN + 1];
+
 	char colors[MAX_DIM][MAX_DIM];
 	int trees[MAX_DIM][MAX_DIM];
 
@@ -27,10 +29,12 @@ int main (int argc, char*argv[]) {
 
 	char tmp;
 
-	fp = fopen(FILE_NAME, "r");
+	/* Apri il file */
+	scanf("%s", fileName);
+	fp = fopen(fileName, "r");
 
 	if (fp) {
-
+		/* Leggi la dimensione della matrice */
 		fscanf(fp, "%d\n", &dim);
 
 		for (i = 0; i < dim; i++) {
