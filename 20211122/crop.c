@@ -12,13 +12,19 @@
 char *crop(char str[], char ch);
 
 int main(int argc, char *argv[]) {
-    char str[LEN + 1];
+    char str[LEN + 1], *strCrop;
     char ch;
 
     fgets(str, LEN, stdin);
     scanf("%c", &ch);
 
-    printf("%s\n", crop(str, ch));
+    strCrop = crop(str, ch);
+
+    if (strCrop) {
+        printf("%s\n", strCrop);
+        free(strCrop);
+    }
+    return 0;
 }
 
 char *crop(char str[], char ch) {
@@ -49,6 +55,8 @@ char *crop(char str[], char ch) {
             *(strCrop + i - start) = str[i];
         }
         *(strCrop + end - start + 1) = '\0';
+    } else {
+        printf("Failed allocating memory\n");
     }
 
     return strCrop;
