@@ -48,7 +48,7 @@ typedef nodoV_t *lista_tempo_t; //lista nodi verticali
 
 //generare un file con dati per 4 operatori su excel
 //creo funzione che prendo da file e metto nelle due liste dati
-lista_posizioni_t *leggi_file(char path1[], lista_posizioni_t *p_lista)
+lista_posizioni_t leggi_file(char path1[], lista_posizioni_t *p_lista)
 {
     char temp[50];        //variabile temporanea dove sovrascriver� prima riga file, tanto poi non utilizzata
     nodoO_t *currO;       //puntatore a nodo corrente orizzontale
@@ -70,13 +70,14 @@ lista_posizioni_t *leggi_file(char path1[], lista_posizioni_t *p_lista)
         printf("errore nell'apertura del file");
     }
 
+    fscanf(fout, "%s", temp);
     while (feof(fout) == 0) //prendo le coordinate dal file e le inserisco nel nuovo nodo orizzontale
     {
         //prendo coordinata nodoO 1 e scorro tutta la lista, quando trovo lo stesso luogo aggiungo nodo verticale
         //aggiunto il nodo verticale scorro tutta la lista ancora e creo nuovo nodo verticale solo se abbiamo la stessa data/ora
         if (i == 0) //prima riga file excel-> la salvo in variabile temporanea poich� non � da utilizzare
         {
-            fscanf(fout, "%s %s %s %s", temp, temp, temp, temp);
+            fscanf(fout, "%s %s %s", temp, temp, temp);
         }
         if (i == 1) //seconda riga file excel
         {
@@ -91,7 +92,7 @@ lista_posizioni_t *leggi_file(char path1[], lista_posizioni_t *p_lista)
         }
         i++;
 
-        if (*p_lista == NULL) //lista vuota posso farsi che puntatori puntino a data zona struttura
+        if (p_lista == NULL) //lista vuota posso farsi che puntatori puntino a data zona struttura
         {
             *p_lista = nuovo_nodoO;
             nuovo_nodoO->coordinate.Lat = latitudine; //inserisco i dati nella lista posizioni e nel primo nodo della lista tempi
@@ -109,7 +110,7 @@ lista_posizioni_t *leggi_file(char path1[], lista_posizioni_t *p_lista)
         else //lista non vuota-> controllo se non ci siano la stessa posizione (stesso luogo)
         {
             currO = *p_lista;
-            while (currO->nextO != NULL) //scorro la lista cercando la posizione
+            while (currO->nextO != NULL && !trovata) //scorro la lista cercando la posizione
             {
                 if ((longitudine != currO->coordinate.Long && latitudine != currO->coordinate.Lat) || (longitudine == currO->coordinate.Long && latitudine != currO->coordinate.Lat) || (longitudine != currO->coordinate.Long && latitudine == currO->coordinate.Lat)) //posizione assente
                     currO = currO->nextO;                                                                                                                                                                                                                               //continuo a scorrere la lista, non ho trovato l stessa posizione
@@ -160,7 +161,7 @@ lista_posizioni_t *leggi_file(char path1[], lista_posizioni_t *p_lista)
         }
     }
     fclose(fout);
-    return p_lista;
+    return *p_lista;
 }
 
 //funzione che riceve la lista e le coordinate da cercare e calcoa media dell'ultima ora e fornisce un elenco di orari
@@ -223,11 +224,11 @@ void Media(lista_posizioni_t p_lista, float LAT, float LONG)
 
 int main()
 {
-    lista_posizioni_t *lista, *p_lista;
+    lista_posizioni_t lista, p_lista;
     float latitudine, longitudine; //coordinate
     int n = 1;
 
-    lista = leggi_file("input.csv", *p_lista);
+    lista = leggi_file("input.csv", &p_lista);
     while (n == 1)
     {
         printf("Inserisci le coordinate di un luogo: ");
