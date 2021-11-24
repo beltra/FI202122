@@ -40,8 +40,8 @@ float *distanzalineare(float start, float stop, int numero, int escludistop) {
     ris = malloc(numero * sizeof(float));
 
     if (ris) {
-        if (numeri == 1) {
-            risultato[0] = start;
+        if (numero == 1) {
+            *(ris) = start;
         } else {
             distance = (stop - start) / (numero - 1 + escludistop);
 
