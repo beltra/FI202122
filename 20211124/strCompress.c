@@ -21,12 +21,11 @@ int main (int argc, char * argv[]) {
             rep++;      /* Update the counter */
         }
         else {
-            printf("%c", prev);
-            printf("%d", rep);
+            printf("%c%d", prev, rep);
             rep = 1;
         }
         prev = str[i];      /* Update the last character analyzed */
     }
 
-    printf("\n");
+    printf("%c%d\n", prev, rep);
 }

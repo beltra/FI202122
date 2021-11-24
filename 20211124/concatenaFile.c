@@ -12,33 +12,35 @@ int main(int argc, char *argv[]) {
 
     char tmp;
     
-
     scanf("%s", name1);
     scanf("%s", name2);
     scanf("%s", nameOut);
 
     scanf("%d", &mode);
-
-    f1 = fopen(name1, "r");
+    
+    if (mode != 1 && mode != 0) {
+        return 0;
+    }
+    
+    if (mode == 1) {
+        f1 = fopen(name1, "r");
+    } else {
+        f1 = fopen(name2, "r");
+    }
     if (f1) {
-        f2 = fopen(name2, "r");
+        if (mode == 1) {
+            f2 = fopen(name2, "r");
+        } else {
+            f2 = fopen(name1, "r");
+        }
         if (f2) {
             fout = fopen(nameOut, "w");
             if (fout) {
-                if (mode == 0) {
-                    while(fscanf(f1, "%c", &tmp) != EOF) {
-                        fprintf(fout, "%c", tmp);
-                    }
-                    while(fscanf(f2, "%c", &tmp) != EOF) {
-                        fprintf(fout, "%c", tmp);
-                    }
-                } else if (mode == 1) {
-                    while(fscanf(f2, "%c", &tmp) != EOF) {
-                        fprintf(fout, "%c", tmp);
-                    }
-                    while(fscanf(f1, "%c", &tmp) != EOF) {
-                        fprintf(fout, "%c", tmp);
-                    }
+                while(fscanf(f1, "%c", &tmp) != EOF) {
+                    fprintf(fout, "%c", tmp);
+                }
+                while(fscanf(f2, "%c", &tmp) != EOF) {
+                    fprintf(fout, "%c", tmp);
                 }
                 fclose(fout);
             } else {

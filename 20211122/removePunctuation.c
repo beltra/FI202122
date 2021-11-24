@@ -19,6 +19,7 @@
 #define LEN 100
 
 int removePunctuation(char str[]);
+int toDelete(char ch);
 
 int main(int argc, char *argv[]) {
     char str[LEN + 1];
@@ -36,13 +37,14 @@ int main(int argc, char *argv[]) {
 }
 
 int removePunctuation(char str[]) {
+    /*
     int len, origLen, i;
     char *risStr;
 
     len = 0;
     origLen = 0;
     for (i = 0; str[i] != '\0'; i++) {
-        if ((str[i] >= LOWA && str[i] <= LOWZ) || (str[i] >= UPPA && str[i] <= UPPZ) || (str[i] >= NUM0 && str[i] <= NUM9) || str[i] == SPACE) {
+        if (!toDelete(str[i])) {
             len++;
         }
         origLen++;
@@ -53,7 +55,7 @@ int removePunctuation(char str[]) {
     if (risStr) {
         len = 0;
         for (i = 0; str[i] != '\0'; i++) {
-            if ((str[i] >= LOWA && str[i] <= LOWZ) || (str[i] >= UPPA && str[i] <= UPPZ) || (str[i] >= NUM0 && str[i] <= NUM9) || str[i] == SPACE) {
+            if (!toDelete(str[i])) {
                 *(risStr + len) = str[i];
                 len++; 
             }
@@ -67,14 +69,16 @@ int removePunctuation(char str[]) {
         str[i] = risStr[i];
     }
 
-    return (origLen - len);
+    free(risStr);
 
-    /*
+    return (origLen - len);
+    */
+
     int cnt, i;
 
     cnt = 0;
     for (i = 0; str[i] != '\0'; i++) {
-        if ((str[i] >= LOWA && str[i] <= LOWZ) || (str[i] >= UPPA && str[i] <= UPPZ) || (str[i] >= NUM0 && str[i] <= NUM9) || str[i] == SPACE) {
+        if (!toDelete(str[i])) {
             str[i - cnt] = str[i];
         } else {
             cnt++;
@@ -83,5 +87,15 @@ int removePunctuation(char str[]) {
     str[i-cnt] = '\0';
 
     return cnt;
-    */
+}
+
+int toDelete(char ch) {
+    int isLow, isUpp, isNum, isSpace;
+
+    isLow = (ch >= LOWA && ch <= LOWZ);
+    isUpp = (ch >= UPPA && ch <= UPPZ);
+    isNum = (ch >= NUM0 && ch <= NUM9);
+    isSpace = (ch == SPACE);
+    
+    return !isLow && !isUpp && !isNum && !isSpace;
 }
