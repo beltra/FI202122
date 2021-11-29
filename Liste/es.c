@@ -10,7 +10,7 @@
 typedef struct listint_s {
     int num;
     struct listint_s *next;
-} listint_t;
+} listi_t;
 
 typedef struct listdate_s {
     int giorno, mese, anno;
@@ -18,7 +18,7 @@ typedef struct listdate_s {
 } listdate_t;
 
 /* Per usare una lista ho bisogno di una testa */
-listint_t *head = NULL;    // ogni testa va inizializzata a NULL, poichè la lista nasce sempre vuota
+listi_t *head = NULL;    // ogni testa va inizializzata a NULL, poichè la lista nasce sempre vuota
 
 /* L'ultimo elemento della lista ha puntatore NULL, per segnalare che dopo non c'è altro */
 
