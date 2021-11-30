@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "liste_float.h"
+#include "liste_int.h"
 
-listf_t *push(listf_t *head, float val) {
-    listf_t *newNode;
+listi_t *push(listi_t *head, int val) {
+    listi_t *newNode;
 
-    newNode = malloc(sizeof(listf_t));
+    newNode = malloc(sizeof(listi_t));
     
     if (newNode) {
         newNode->num = val;
@@ -19,11 +19,11 @@ listf_t *push(listf_t *head, float val) {
     return head;
 }
 
-listf_t *append(listf_t *head, float val) {
-    listf_t *newNode;
-    listf_t *p;
+listi_t *append(listi_t *head, int val) {
+    listi_t *newNode;
+    listi_t *p;
 
-    newNode = malloc(sizeof(listf_t));
+    newNode = malloc(sizeof(listi_t));
     
     if (newNode) {
         newNode->num = val;
@@ -43,8 +43,8 @@ listf_t *append(listf_t *head, float val) {
     return head;
 }
 
-listf_t *freeList(listf_t *head) {
-    listf_t *tmp;
+listi_t *freeList(listi_t *head) {
+    listi_t *tmp;
 
     while (head != NULL) {
         tmp = head;
@@ -55,8 +55,8 @@ listf_t *freeList(listf_t *head) {
     return head;
 }
 
-listf_t *search(listf_t *head, float val) {
-    listf_t *p;
+listi_t *search(listi_t *head, int val) {
+    listi_t *p;
 
     /* Scorro tutta la lista */
     for (p = head; p != NULL; p = p->next) {
@@ -69,8 +69,8 @@ listf_t *search(listf_t *head, float val) {
     return NULL;
 }
 
-listf_t *delete(listf_t *head, float val) {
-    listf_t *p, *del;
+listi_t *delete(listi_t *head, int val) {
+    listi_t *p, *del;
 
     /* Se l'elemento cercato è il primo */
     if (head->num == val) {
@@ -97,11 +97,11 @@ listf_t *delete(listf_t *head, float val) {
     return head;
 }
 
-void view(listf_t *head) {
-    listf_t *p;
+void view(listi_t *head) {
+    listi_t *p;
 
     for (p = head; p != NULL; p = p->next) {
-        printf("%f -> ", p->num);
+        printf("%d -> ", p->num);
     }
     printf("|\n");
 }

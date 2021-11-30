@@ -9,12 +9,14 @@ typedef struct listf_s {
 listf_t *append(listf_t *head, float newval);
 listf_t *push(listf_t *head, float newval);
 
-void view(listf_t *head);
-
+/* Libera tutta la lista */
 listf_t *freeList(listf_t *head);
 
 listf_t *search(listf_t *head, float val);
 
 listf_t *delete(listf_t *head, float val);
+
+/* Stampa tutti i valori della lista */
+void view(listf_t *head);
 
 #endif
