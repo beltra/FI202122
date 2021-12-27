@@ -7,7 +7,7 @@
 
 #define DIM 10
 
-int main (int argc, char * argv[]) {
+int main (int argc, char *argv[]) {
     int num[DIM];
     int obj;
     int i, j, ris;
