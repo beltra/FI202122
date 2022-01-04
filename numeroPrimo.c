@@ -14,28 +14,25 @@ int main() {
 
 	/*i = 2;
 
-	while(i < num) {
+	while(i < num && primo) {
 		if (num % i == 0) {
 			primo = 0;
-			i = num;
 		}
 		else {
 			i++;
 		}
 	}*/
 
-	for(i = 2; i < num; i++) {
+	for(i = 2; i < num && primo; i++) {
 		if (num % i == 0) {
 			primo = 0;
-			i = num;
+			printf("%d non e' primo\n", num);
 		}
 	}
 
 	if (primo) {
 		printf("%d e' primo\n", num);
 	}
-	else {
-		printf("%d non e' primo\n", num);
-	}
 
+	return 0;
 }
