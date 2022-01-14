@@ -7,8 +7,9 @@
 #define MAX_NUM 20
 #define FRAME '*'
 
-typedef struct {
+typedef struct word_s {
     char word[MAX_LEN+1];
+    int len;
 } word_t;
 
 int main (int argc, char * argv[]) {
@@ -17,7 +18,9 @@ int main (int argc, char * argv[]) {
     int i, j, maxLen, len[MAX_NUM];
 
     /* Get the number of words */
-    scanf("%d", &num);
+    do {
+        scanf("%d", &num);
+    } while (num > MAM_NUM || num < 0);
 
     /* For every word in input, put it in the corresponding place in the array*/
     maxLen = 0;
@@ -31,8 +34,8 @@ int main (int argc, char * argv[]) {
     }
 
     /* For every line and every column */
-    for (i = 0; i <= num + 1; i++) {
-        for (j = 0; j <= maxLen + 1; j++) {
+    for (i = 0; i < num + 2; i++) {
+        for (j = 0; j < maxLen + 2; j++) {
             /* If it's the frame print the frames's character */
             if (i == 0 || i == num + 1 || j == 0 || j == maxLen + 1) {
                 printf("%c", FRAME);

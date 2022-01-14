@@ -445,8 +445,7 @@ char all(char v[])
         }
     } else {
         printf("allitteration: failed allocating memory\n");
-    }
-    
+    }   
 
     return 0;
 }
