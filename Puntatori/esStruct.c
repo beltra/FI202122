@@ -33,9 +33,9 @@ void finestraDate(data_t date[], int dim, data_t *minDate, data_t *maxDate) {
     *minDate.y = min.y
 
     /* Ciò è equivalente a */
-    minDate -> d = min -> d
-    minDate -> m = min -> m
-    minDate -> y = min -> y
+    minDate -> d = min.d
+    minDate -> m = min.m
+    minDate -> y = min.y
 }
 
 int antecedente(date_t date1, date_t date2) {

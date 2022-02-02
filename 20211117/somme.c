@@ -39,7 +39,9 @@ int countComb(int num[], int dim, int obj) {
 
     if (obj == 0) {
         count = 1;
-    }    
+    }
+
+    media = (float) tot / num;
 
     for (i = dim-1; i >= 0; i--) {
         count += countComb(num, i, obj - num[i]);
