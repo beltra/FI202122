@@ -3,6 +3,8 @@
 *   crea una lista con tutti gli elementi della stringa separati.
 */
 
+#include <stdio.h>
+
 typedef struct nodes_s {
     char *string;
     struct nodes_s *next;
@@ -34,7 +36,7 @@ lists_t *append_alloc(lists_t *h, char src[], int dim) {
                 h = newNode;
             }
         } else {
-            printf("Failed allocating new node\n")
+            printf("Failed allocating new node\n");
         }
 
     } else {

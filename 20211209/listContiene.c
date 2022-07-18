@@ -4,6 +4,8 @@
 *   e non è definito alcun ordinamento.
 */
 
+#include <stdio.h>
+
 typedef struct nodei_s {
     int num;
     struct nodei_s *next;

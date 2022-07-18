@@ -30,7 +30,7 @@ listwords_t *listWords(FILE *fin) {
         if (index) {
             (index->count)++;
         } else {
-            out = append(out, word);
+            out = append(out, w);
         }
     }
 
