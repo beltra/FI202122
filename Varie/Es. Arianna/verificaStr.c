@@ -16,14 +16,14 @@ void popola(char *s, int V[]) {
 }
 
 int calcola (int B1[], int B2[], int B[]) {
-  int i, trovato = 0;
+  int i, valid = 1;
   for (i = 0; i < 26; i++) {
-    if (B1[i] * B2[i] + (1 - B1[i]) * (1 - B2[i]) == 0) {
-      trovato = 1;
+    if (!((B1[i] && B2[i]) || (!B1[i] && !B2[i]))) {
+      valid = 0;
       B[i] = 1;
     }
   }
-  return trovato;
+  return !valid;
 }
 
 int verifica (char *s1, char *s2, int *B) {
