@@ -28,3 +28,4 @@ int max(char nomeFile[], int maxNum) {
 
     return max;
 }
+
