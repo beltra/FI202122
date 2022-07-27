@@ -1,13 +1,14 @@
+#include "liste_int.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "liste_int.h"
 
 listi_t *push(listi_t *head, int val) {
     listi_t *newNode;
 
     /* Creo un nuovo nodo */
     newNode = malloc(sizeof(listi_t));
-    
+
     if (newNode) {
         /* Lo metto prima della head */
         newNode->num = val;
@@ -27,18 +28,65 @@ listi_t *append(listi_t *head, int val) {
 
     /* Creo un nuovo nodo */
     newNode = malloc(sizeof(listi_t));
-    
+
     if (newNode) {
         /* Gli assegno il valore */
         newNode->num = val;
         newNode->next = NULL;
 
-        if (head == NULL) {     // Se la lista è vuota
+        if (head == NULL) {  // Se la lista è vuota
             head = newNode;
         } else {
             // Arrivo in fondo alla lista (*p ultimo elemento)
-            for (p = head; p->next != NULL; p = p->next);
+            for (p = head; p->next != NULL; p = p->next)
+                ;
             p->next = newNode;
+        }
+    } else {
+        printf("append: failed allocating memory\n");
+    }
+
+    return head;
+}
+
+listi_t *insPos(listi_t *head, int val, int pos) {
+    listi_t *newNode;
+    listi_t *p;
+
+    int cnt;
+
+    /* Creo un nuovo nodo */
+    newNode = malloc(sizeof(listi_t));
+
+    if (newNode) {
+        /* Gli assegno il valore */
+        newNode->num = val;
+        
+        if (head == NULL) {  // Se la lista è vuota
+            if (pos == 1) {
+                newNode->next = NULL;
+                head = newNode;
+            } else {
+                printf("insPos: invalid position\n");
+                free(newNode);
+            }
+        } else {
+            // Arrivo in fondo alla lista (*p ultimo elemento)
+            for (p = head, cnt = 0; p != NULL; p = p->next, cnt++)
+                ;
+            if (pos > cnt) {
+                printf("insPos: invalid position\n");
+                free(newNode);
+            } else if (pos == 1) {
+                newNode->next = head;
+                head = newNode;
+            } else {
+                // Scorro la lista fino alla posizione
+                for (p = head, cnt = 0; cnt < pos - 1; p = p->next, cnt++)
+                    ;
+                newNode->next = p->next;
+                p->next = newNode;
+            }
         }
     } else {
         printf("append: failed allocating memory\n");
@@ -74,7 +122,7 @@ listi_t *search(listi_t *head, int val) {
     return NULL;
 }
 
-listi_t *delete(listi_t *head, int val) {
+listi_t *delete (listi_t *head, int val) {
     listi_t *p, *del;
 
     /* Se l'elemento cercato è il primo */
@@ -82,7 +130,7 @@ listi_t *delete(listi_t *head, int val) {
         del = head;
         head = head->next;
         free(del);
-        
+
         return head;
     } else {
         for (p = head; p->next != NULL; p = p->next) {

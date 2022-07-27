@@ -1,13 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "liste_int.h"
 
-listi_t *push(listi_t *head, int val) {
-    listi_t *newNode;
+#include <stdio.h>
+#include <stdlib.h>
+
+nodo_t *push(nodo_t *head, int val) {
+    nodo_t *newNode;
 
     /* Creo un nuovo nodo */
-    newNode = malloc(sizeof(listi_t));
-    
+    newNode = malloc(sizeof(nodo_t));
+
     if (newNode) {
         /* Lo metto prima della head */
         newNode->num = val;
@@ -21,23 +22,24 @@ listi_t *push(listi_t *head, int val) {
     return head;
 }
 
-listi_t *append(listi_t *head, int val) {
-    listi_t *newNode;
-    listi_t *p;
+nodo_t *append(nodo_t *head, int val) {
+    nodo_t *newNode;
+    nodo_t *p;
 
     /* Creo un nuovo nodo */
-    newNode = malloc(sizeof(listi_t));
-    
+    newNode = malloc(sizeof(nodo_t));
+
     if (newNode) {
         /* Gli assegno il valore */
         newNode->num = val;
         newNode->next = NULL;
 
-        if (head == NULL) {     // Se la lista è vuota
+        if (head == NULL) {  // Se la lista è vuota
             head = newNode;
         } else {
             // Arrivo in fondo alla lista (*p ultimo elemento)
-            for (p = head; p->next != NULL; p = p->next);
+            for (p = head; p->next != NULL; p = p->next)
+                ;
             p->next = newNode;
         }
     } else {
@@ -47,8 +49,54 @@ listi_t *append(listi_t *head, int val) {
     return head;
 }
 
-listi_t *freeList(listi_t *head) {
-    listi_t *tmp;
+nodo_t *insPos(nodo_t *head, int val, int pos) {
+    nodo_t *newNode;
+    nodo_t *p;
+
+    int cnt;
+
+    /* Creo un nuovo nodo */
+    newNode = malloc(sizeof(nodo_t));
+
+    if (newNode) {
+        /* Gli assegno il valore */
+        newNode->num = val;
+        
+        if (head == NULL) {  // Se la lista è vuota
+            if (pos == 1) {
+                newNode->next = NULL;
+                head = newNode;
+            } else {
+                printf("insPos: invalid position\n");
+                free(newNode);
+            }
+        } else {
+            // Arrivo in fondo alla lista (*p ultimo elemento)
+            for (p = head, cnt = 0; p != NULL; p = p->next, cnt++)
+                ;
+            if (pos > cnt) {
+                printf("insPos: invalid position\n");
+                free(newNode);
+            } else if (pos == 1) {
+                newNode->next = head;
+                head = newNode;
+            } else {
+                // Scorro la lista fino alla posizione
+                for (p = head, cnt = 0; cnt < pos - 1; p = p->next, cnt++)
+                    ;
+                newNode->next = p->next;
+                p->next = newNode;
+            }
+        }
+    } else {
+        printf("append: failed allocating memory\n");
+    }
+
+    return head;
+}
+
+nodo_t *freeList(nodo_t *head) {
+    nodo_t *tmp;
 
     /* Scorro tutta la lista e elimino ogni elemento */
     while (head != NULL) {
@@ -60,8 +108,8 @@ listi_t *freeList(listi_t *head) {
     return head;
 }
 
-listi_t *search(listi_t *head, int val) {
-    listi_t *p;
+nodo_t *search(nodo_t *head, int val) {
+    nodo_t *p;
 
     /* Scorro tutta la lista */
     for (p = head; p != NULL; p = p->next) {
@@ -74,15 +122,15 @@ listi_t *search(listi_t *head, int val) {
     return NULL;
 }
 
-listi_t *delete(listi_t *head, int val) {
-    listi_t *p, *del;
+nodo_t *delete (nodo_t *head, int val) {
+    nodo_t *p, *del;
 
     /* Se l'elemento cercato è il primo */
     if (head->num == val) {
         del = head;
         head = head->next;
         free(del);
-        
+
         return head;
     } else {
         for (p = head; p->next != NULL; p = p->next) {
@@ -102,8 +150,8 @@ listi_t *delete(listi_t *head, int val) {
     return head;
 }
 
-void view(listi_t *head) {
-    listi_t *p;
+void view(nodo_t *head) {
+    nodo_t *p;
 
     /* Stampo ogni elemento della lista */
     for (p = head; p != NULL; p = p->next) {
