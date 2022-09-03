@@ -17,7 +17,7 @@ void media_mobile(float *A, int m, float MM[]) {
 void stampa(float *V, int n) {
     if (n > 0) {
         printf("%f ", *V);
-        stampa(V + 1, n);
+        stampa(V + 1, n - 1);
     }
 }
 
