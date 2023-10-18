@@ -1,7 +1,7 @@
 /*
-*   Scrivere un sottoprogramma che riceve in ingresso una stringa con il nome di un file e 
-*   il numero di valori che contiene. Ne restituisce il valore massimo
-*/
+ *   Scrivere un sottoprogramma che riceve in ingresso una stringa con il nome di un file e
+ *   il numero di valori che contiene. Ne restituisce il valore massimo
+ */
 
 #include <stdio.h>
 

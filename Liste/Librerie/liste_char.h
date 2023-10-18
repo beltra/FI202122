@@ -14,9 +14,7 @@ listc_t *freeList(listc_t *head);
 
 listc_t *search(listc_t *head, char val);
 
-listc_t *delete(listc_t *head, char val);
+listc_t *delete (listc_t *head, char val);
 
 /* Stampa tutti i valori della lista */
 void view(listc_t *head);
-
-

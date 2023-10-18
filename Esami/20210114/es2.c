@@ -3,18 +3,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct listi_s {
+typedef struct nodo_s {
     int num;
-    struct listi_s *next;
-} listi_t;
+    struct nodo_s *next;
+} nodo_t;
 
 
-listi_t *compact(listi_t *h);
-listi_t *append(listi_t *head, int newval);
+nodo_t *compact(nodo_t *h);
+nodo_t *append(nodo_t *head, int newval);
 
 int main(int argc, char *argv[]) {
-    listi_t *head = NULL;
-    listi_t *p;
+    nodo_t *head = NULL;
+    nodo_t *p;
     int i, dim, val;
 
     scanf("%d", &dim);
@@ -34,8 +34,8 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-listi_t *compact(listi_t *head) {
-    listi_t *p, *s, *tmp;
+nodo_t *compact(nodo_t *head) {
+    nodo_t *p, *s, *tmp;
     int valid;
     int val;
 
@@ -64,12 +64,12 @@ listi_t *compact(listi_t *head) {
     return head;
 }
 
-listi_t *append(listi_t *head, int val) {
-    listi_t *newNode;
-    listi_t *p;
+nodo_t *append(nodo_t *head, int val) {
+    nodo_t *newNode;
+    nodo_t *p;
 
     /* Creo un nuovo nodo */
-    newNode = malloc(sizeof(listi_t));
+    newNode = malloc(sizeof(nodo_t));
     
     if (newNode) {
         /* Gli assegno il valore */

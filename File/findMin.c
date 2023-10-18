@@ -1,7 +1,7 @@
 /*
-*   Scrivere un sottoprogramma che riceve in ingresso una stringa con il nome di un file e 
-*   il numero di valori che contiene. Ne restituisce il valore massimo
-*/
+ *   Scrivere un sottoprogramma che riceve in ingresso una stringa con il nome di un file e
+ *   il numero di valori che contiene. Ne restituisce il valore massimo
+ */
 
 #include <stdio.h>
 
@@ -13,7 +13,7 @@ int max(char nomeFile[], int maxNum) {
     fp = fopen(nomeFile, "r");
 
     if (fp != NULL) {
-        if(fscanf(fp, "%d", &min) > 0) {
+        if (fscanf(fp, "%d", &min) > 0) {
             while (fscanf(fp, "%d", &val) > 0) {
                 if (val < min) {
                     min = val;
@@ -30,19 +30,19 @@ int max(char nomeFile[], int maxNum) {
                 if (val < min) {
                     min = val;
                 }
-                ok = fscanf(fp, "%d", &val); 
+                ok = fscanf(fp, "%d", &val);
             }
         }
         fclose(fp);
         */
 
         /*
-        *   Esiste un sottoprogramma che restituisce 0 se non è stata raggiunta la fine del file, 1 altrimenti.
-        *   Questo sottoprogramma va usato solo dopo una lettura, generalmente per capire se un dato acquisito è valido.
-        */
+         *   Esiste un sottoprogramma che restituisce 0 se non è stata raggiunta la fine del file, 1 altrimenti.
+         *   Questo sottoprogramma va usato solo dopo una lettura, generalmente per capire se un dato acquisito è valido.
+         */
 
         /*
-        fscanf(fp, "%d", &val);
+        fscanf(fp, "%d", &min);
         if (!feof(fp)) {
             fscanf(fp, "%d", &val);
             while (!feof(fp)) {
@@ -54,12 +54,11 @@ int max(char nomeFile[], int maxNum) {
         }
         */
 
-        /* 
-        *    NON si usa il do while, gli unici due modi da usare sono il primo e l'ultimo.
-        *    BISOGNA controllare la corretta aprertura del file e chiuderlo alla fine.
-        */        
-    }
-    else {
+        /*
+         *    NON si usa il do while, gli unici due modi da usare sono il primo e l'ultimo.
+         *    BISOGNA controllare la corretta aprertura del file e chiuderlo alla fine.
+         */
+    } else {
         printf("Errore accesso file %s", nomeFile);
         min = 0;
     }

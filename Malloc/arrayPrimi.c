@@ -18,12 +18,14 @@ int main (int argc, char *argv[]) {
     int *nPrimi;
     int i;
 
+    printf("Quanti dati vuoi inserire?\n");
     scanf("%d", &dim);
 
     num = malloc(dim*sizeof(int));
 
     if (num) {
-        for (i = 0; i < dim; i++) {
+        printf("Inserisci i dati:\n");
+        for (i = 0; i < dim; i++) {            
             scanf("%d", num + i);
         }
         

@@ -42,7 +42,7 @@ int main ()
             if (parziale < costo)
             {
                 costo = parziale;
-                copia_ind = agenzia_immobiliare[i].indirizzo;
+                *copia_ind = agenzia_immobiliare[i].indirizzo;
             }
         }
         parziale = 0;

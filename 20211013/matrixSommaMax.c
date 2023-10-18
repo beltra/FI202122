@@ -12,7 +12,7 @@ int main(int argc, char * argv[]) {
 	int rows, cols, sum, lastSum, index;
     int i, j;
 
-	/* Riempi la matrice con valor idati dall'utente */
+	/* Riempi la matrice con valori dati dall'utente */
     do {
         scanf("%d", &rows);
     } while (rows < 1 || rows > 50);

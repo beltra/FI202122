@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-#define DIM 10
+#define DIM 5
 
 int main (int argc, char *argv[]) {
     int num[DIM];

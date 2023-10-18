@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 typedef struct data_s {
   int numero;
   char carattere;

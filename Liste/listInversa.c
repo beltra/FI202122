@@ -6,16 +6,16 @@
 #include <stdlib.h>
 #include "liste_int.h"
 
-listi_t *reverse(listi_t *h);
+nodo_t *reverse(nodo_t *h);
 
 int main (int argc, char *argv[]) {
 
     return 0;
 }
 
-listi_t *reverse(listi_t *h) {
-    listi_t *p;
-    listi_t *hNew = NULL;
+nodo_t *reverse(nodo_t *h) {
+    nodo_t *p;
+    nodo_t *hNew = NULL;
 
     for (p = h; p != NULL; p = p->next) {
         hNew = push(hNew, p->num);                                       

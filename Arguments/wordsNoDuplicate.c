@@ -22,7 +22,9 @@ listwords_t *search(listwords_t  *h, char word[]);
 listwords_t *freeList(listwords_t *h);
 
 int main(int argc, char *argv[]) {
-    char *fileName;
+    char* fileName;
+
+
     FILE *fin;
     listwords_t *h, *p;
 
